@@ -1,0 +1,21 @@
+{
+	"name": "nette-examples/di",
+	"description": "Dependency Injection by Example: learn dependency injection and Nette DI from first principles, one runnable example at a time",
+	"keywords": ["dependency injection", "di", "container", "tutorial", "examples", "php"],
+	"homepage": "https://doc.nette.org/dependency-injection",
+	"type": "project",
+	"license": ["BSD-3-Clause", "GPL-2.0-only", "GPL-3.0-only"],
+	"require": {
+		"php": ">= 8.4",
+		"nette/di": "^3.2.6"
+	},
+	"require-dev": {
+		"phpstan/phpstan": "^2.2@stable"
+	},
+	"scripts": {
+		"phpstan": "phpstan analyse",
+		"lint-config": "neon-lint .",
+		"check-outputs": "@php bin/check-outputs.php",
+		"check": ["@lint-config", "@phpstan", "@check-outputs"]
+	}
+}

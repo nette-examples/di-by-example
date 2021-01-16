@@ -1,0 +1,26 @@
+name: Checks
+
+on: [push, pull_request]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          coverage: none
+
+      - run: composer install --no-progress --prefer-dist
+
+      - name: Lint configuration files
+        run: composer lint-config
+
+      - name: Static analysis
+        run: composer phpstan
+
+      - name: Chapter outputs match their readmes
+        run: php bin/check-outputs.php

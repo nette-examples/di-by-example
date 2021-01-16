@@ -1,0 +1,9 @@
+parameters:
+	level: 8
+
+	paths:
+		- .
+
+	excludePaths:
+		- vendor/*
+		- */temp/*
