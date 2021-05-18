@@ -53,7 +53,9 @@ php 01-hidden-dependencies/bad.php
 
 It is a working program that does something you would not want. Read its output, read the code, feel the problem - and only then run `good.php`, which fixes it. The `diff` between the two files is, honestly, the whole lesson; the readme is just me talking around it.
 
-From the container chapters onward there is a single `example.php` per chapter, plus a `config.neon`, and occasionally a second script that deliberately blows up so you can see what a real error looks like.
+Some chapters end with a test, because that is where the difference between the two designs is easiest to feel: both tests pass, and one of them costs a great deal more than the other. There is no testing framework anywhere in this repository. `test()` is five lines at the top of the file that print `[PASS]` or `[FAIL]` and exit non-zero on failure, and that is on purpose - testability is something a design gives you, not something a library sells you.
+
+From the container chapters onward there is a single `example.php` per chapter, plus a `config.neon`, and occasionally a second script that deliberately blows up, or swaps a service out, so you can see what that looks like.
 
 Go in order. Nothing in a chapter uses anything a later chapter introduces.
 

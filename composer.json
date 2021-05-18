@@ -13,7 +13,7 @@
 		"phpstan/phpstan": "^2.2@stable"
 	},
 	"scripts": {
-		"phpstan": "phpstan analyse",
+		"phpstan": "@php bin/check-types.php",
 		"lint-config": "neon-lint .",
 		"check-outputs": "@php bin/check-outputs.php",
 		"check": ["@lint-config", "@phpstan", "@check-outputs"]
