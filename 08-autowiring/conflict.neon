@@ -1,0 +1,8 @@
+# Two services of the same type, neither of them marked - and one class
+# asking for a Database. Autowiring refuses to guess. That is the point.
+services:
+	mainDb: Database('mysql:host=127.0.0.1;dbname=blog', admin)
+	tempDb: Database('sqlite::memory:', test)
+
+	- ConsoleLogger
+	- ArticleRepository

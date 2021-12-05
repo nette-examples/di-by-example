@@ -1,0 +1,21 @@
+parameters:
+	dsn: 'mysql:host=127.0.0.1;dbname=blog'
+	user: admin
+
+services:
+	# Two databases of the same type: one preferred, one hidden from autowiring
+	mainDb: Database(%dsn%, %user%)
+
+	tempDb:
+		create: Database('sqlite::memory:', test)
+		autowired: false        # never passed anywhere automatically
+
+	- ConsoleLogger
+
+	# Constructors are read and matched by type, so no arguments needed here
+	- ArticleRepository
+
+	# An array of every service of a type, thanks to the Shipper[] phpDoc
+	- ShipManager
+	- DhlShipper
+	- PplShipper

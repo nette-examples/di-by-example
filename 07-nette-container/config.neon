@@ -1,0 +1,11 @@
+# Values the container may use when building services
+parameters:
+	dsn: 'mysql:host=127.0.0.1;dbname=blog'
+	user: admin
+
+# The same wiring as the hand-written container in chapter 06
+services:
+	- Database(%dsn%, %user%)
+	- ConsoleLogger
+	- ArticleRepository
+	- ReportGenerator
