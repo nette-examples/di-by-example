@@ -1,0 +1,10 @@
+services:
+	- Database('mysql:host=127.0.0.1;dbname=blog', admin)
+	- ConsoleLogger
+	- SlugGenerator
+
+	# Both of these are interfaces. Nette writes the implementations.
+	- ArticleFactory
+	- DatabaseAccessor
+
+	- EditController

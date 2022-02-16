@@ -1,0 +1,8 @@
+# Everything the application normally uses...
+includes:
+	- config.neon
+
+services:
+	# ...with one service swapped. The including file has the last word,
+	# and redefining a name replaces the whole definition, arguments included.
+	mailer: FakeMailer

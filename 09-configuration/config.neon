@@ -1,0 +1,19 @@
+# Values used below as %name%. Keeping them here means changing them in one place.
+parameters:
+	logFile: %tempDir%/app.log
+	smtp:
+		host: smtp.example.com
+		port: 465
+
+services:
+	# An entity: class plus arguments, written the way you would write it in PHP
+	mailer: SmtpMailer(%smtp.host%, %smtp.port%, secure: true)
+
+	logger:
+		create: FileLogger(%logFile%)
+		setup:
+			# methods called right after the service is created
+			- setPrefix('[newsletter]')
+
+	# @logger refers to a service by name, @Mailer would refer to one by type
+	distributor: NewsletterDistributor(@mailer, @logger)
