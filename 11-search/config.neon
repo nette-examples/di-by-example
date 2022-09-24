@@ -1,0 +1,10 @@
+# Find classes on disk and register them, instead of listing them one by one
+search:
+	repositories:
+		in: %appDir%
+		classes:
+			- *Repository
+
+services:
+	- Database('mysql:host=127.0.0.1;dbname=blog', admin)
+	- ConsoleLogger

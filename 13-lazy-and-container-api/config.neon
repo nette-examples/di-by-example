@@ -1,0 +1,9 @@
+di:
+	# Defer creating services until something actually uses them
+	lazy: true
+
+services:
+	# named, because the methods below ask about it by name
+	database: Database('mysql:host=127.0.0.1;dbname=blog', admin)
+	- ConsoleLogger
+	- ReportGenerator

@@ -1,0 +1,19 @@
+# Call a method on every service of a given type, without listing them
+decorator:
+	EventHandler:
+		setup:
+			- setVerbose(true)
+
+services:
+	- ConsoleLogger
+
+	welcome:
+		create: SendWelcomeEmail
+		tags: [subscriber]
+
+	statistics:
+		create: UpdateStatistics
+		tags: [subscriber: 10]     # a tag may carry a value
+
+	# tagged() collects every service carrying the tag
+	- EventDispatcher(tagged(subscriber))

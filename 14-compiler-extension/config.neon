@@ -1,0 +1,14 @@
+# A section provided by our own extension, validated against its schema
+events:
+	tag: subscriber
+
+services:
+	- ConsoleLogger
+
+	welcome:
+		create: SendWelcomeEmail
+		tags: [subscriber]
+
+	statistics:
+		create: UpdateStatistics
+		tags: [subscriber]
