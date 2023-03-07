@@ -28,7 +28,10 @@ foreach (glob("$root/[0-9][0-9]-*", GLOB_ONLYDIR) ?: [] as $dir) {
 		continue;
 	}
 
-	if (!preg_match('~^## Output\s*$(.*?)(?=^## |\z)~ms', (string) file_get_contents($readme), $m)) {
+	// normalize line endings: on Windows the working copy may hold CRLF
+	$text = str_replace("\r\n", "\n", (string) file_get_contents($readme));
+
+	if (!preg_match('~^## Output\s*$(.*?)(?=^## |\z)~ms', $text, $m)) {
 		echo "$name: no '## Output' section\n";
 		$failures++;
 		continue;
